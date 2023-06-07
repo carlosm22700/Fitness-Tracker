@@ -22,6 +22,15 @@ class Workout(models.Model):
         return f'Workout for {self.user.username}'
 
 
+class Routine(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    workouts = models.ManyToManyField(Workout)
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return f'Routine {self.name} for {self.user.username}'
+
+
 class DayOfWeek(models.Model):
     DAY_CHOICES = (
         ('Mon', 'Monday'),
