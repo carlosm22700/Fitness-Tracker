@@ -1,0 +1,26 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: #f5f5f5; /* Change the body background color */
+  color: #333; /* Change the text color */
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+nav {
+  background-color: #333; /* Change the navbar background color */
+}
+
+nav a {
+  color: #fff; /* Change the navbar text color */
+}
+
+footer.page-footer {
+  padding-top: 0;
+  text-align: right;
+  background-color: #333; /* Change the footer background color */
+  color: #fff; /* Change the footer text color */
+}
