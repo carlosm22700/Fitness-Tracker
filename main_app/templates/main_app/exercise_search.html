@@ -1,0 +1,24 @@
+
+{% extends 'main_app/base.html' %} {% block content %}
+
+<form method="get" action="{% url 'exercise_search' %}">
+    <input type="text" name="query" placeholder="Search for exercises...">
+    <button type="submit">Search</button>
+</form>
+
+{% if exercises %}
+    <ul>
+        {% for exercise in exercises %}
+    <div>
+        <h3>{{ exercise.name }}</h3>
+        <img src="{{ exercise.image }}" alt="{{ exercise.name }}">
+        <p>Category: {{ exercise.category }}</p>
+    </div>
+{% endfor %}
+
+    </ul>
+{% endif %}
+
+
+{% endblock %}
+
