@@ -14,24 +14,6 @@ class Exercise(models.Model):
         return self.name
 
 
-class Workout(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    exercises = models.ManyToManyField(Exercise)
-
-    def __str__(self):
-        return f'Workout for {self.user.username}'
-
-
-class TrainingData(models.Model):
-    workout = models.ForeignKey(Workout, on_delete=models.CASCADE)
-    reps = models.IntegerField()
-    weight = models.FloatField()
-    unit = models.CharField(max_length=10)
-
-    def __str__(self):
-        return f'Training data for {self.workout}'
-
-
 class TrainingDay(models.Model):
     DAY_CHOICES = (
         ('Mon', 'Monday'),
@@ -51,19 +33,30 @@ class TrainingDay(models.Model):
 
 class Routine(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    workouts = models.ManyToManyField(Workout)
     name = models.CharField(max_length=200)
+    days_of_week = models.ManyToManyField(TrainingDay)
 
     def __str__(self):
         return f'Routine {self.name} for {self.user.username}'
+
+
+class PlannedExercise(models.Model):
+    routine = models.ForeignKey(Routine, on_delete=models.CASCADE)
+    exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE)
+    sets = models.IntegerField()
+    reps = models.IntegerField()
+
+    def __str__(self):
+        return f'Planned exercise in routine {self.routine}'
 
 
 class Log(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE)
     date = models.DateField()
-    reps = models.IntegerField()
-    weight = models.FloatField
+    sets = models.IntegerField(default=0)
+    reps = models.IntegerField(default=0)
+    weight = models.FloatField(default=0.0)
 
     def __str__(self):
         return f'Log for {self.user.username} on {self.date}'
