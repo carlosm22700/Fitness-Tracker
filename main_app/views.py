@@ -4,6 +4,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
+from .forms import RoutineForm
+from .models import TrainingDay
 
 # Create your views here.
 
@@ -34,6 +36,20 @@ def signup(request):
         'error': error_message
     })
     # user us navigating to signup page to fill out the form
+
+
+def add_routine(request):
+    if request.method == "POST":
+        form = RoutineForm(request.POST)
+        if form.is_valid():
+            routine = form.save(commit=False)
+            routine.user = request.user
+            routine.save()
+            form.save_m2m()
+            return redirect('home')
+    else:
+        form = RoutineForm()
+    return render(request, 'main_app/add_routine.html', {'form': form})
 
 
 def exercise_search(request):
