@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 
 
 class Exercise(models.Model):
+    api_id = models.IntegerField(null=True, default=None)
     name = models.CharField(max_length=200)
     description = models.TextField()
     muscle_group = models.CharField(max_length=200)
