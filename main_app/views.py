@@ -10,7 +10,30 @@ from django.contrib.auth import login
 
 @login_required
 def home(request):
-    return render(request, 'main_app/home.html')
+    days_of_week = ["Monday", "Tuesday", "Wednesday",
+                    "Thursday", "Friday", "Saturday", "Sunday"]
+    return render(request, 'main_app/home.html', {'days_of_week': days_of_week})
+
+
+def signup(request):
+    # POST request
+    error_message = ''
+    # user is signing up with a form submission
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('home')
+        else:
+            error_message = 'invalid signup - try again'
+    # GET request
+    form = UserCreationForm()
+    return render(request, 'registration/signup.html', {
+        'form': form,
+        'error': error_message
+    })
+    # user us navigating to signup page to fill out the form
 
 
 def exercise_search(request):
@@ -61,24 +84,3 @@ def exercise_search(request):
 
     # If there is no query, just render the search page without results
     return render(request, 'main_app/exercise_search.html')
-
-
-def signup(request):
-    # POST request
-    error_message = ''
-    # user is signing up with a form submission
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect('home')
-        else:
-            error_message = 'invalid signup - try again'
-    # GET request
-    form = UserCreationForm()
-    return render(request, 'registration/signup.html', {
-        'form': form,
-        'error': error_message
-    })
-    # user us navigating to signup page to fill out the form

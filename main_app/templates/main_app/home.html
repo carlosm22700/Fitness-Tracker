@@ -15,12 +15,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Loop through the days and routines here -->
+                            {% for day in days_of_week %}
                             <tr>
-                                <td>Example Day</td>
-                                <td>Example Routine</td>
+                                <td>{{ day }}</td>
+                                <td>
+                                    <!-- Here you'll later loop through routines and display if the day matches -->
+                                </td>
                             </tr>
-                            <!-- End Loop -->
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>
