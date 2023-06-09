@@ -1,23 +1,14 @@
 import requests
-from django.shortcuts import render
-from urllib.parse import quote
+from django.shortcuts import render, redirect
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login
 
 # Create your views here.
-'''
-TODO:
-*Work on Workout & Routine implementation and link to auth sessions in models
-*work on log implementaion and PRs
--AAU, I want to see a list of Routine split up into days of the week when looking at my dash/home page
--each routine 'day' displays the days of the week on the left and to the right of each day, the 'title' of the split e.g chest/tris, or upper body. this is based on a user input.
--AAU, when I click on a 'workout' link at the top of the chart, i want to see a display of each individual routine and its exercises ive added so far. if empty it displays "no exercises added'.
--AAU, I want to add workouts/exercises for each routine by clicking on a plus logo. When doing this, it would take me to the exersice, search page.
--AAU, when I reach the search page, I want to be able to search for exercises and each exercise should display a button that adds it to my workout list, under the specific routine that I added. I will then be redirected back to my workout page to see the workout added under the specific routine.
--AAU, I should be able to delete a specific exercise associated with the routine, from the workouts page.
--AAU, when clicking on the ADD WORKOUT button I want to be able to create a name for the Workout/Routine, and assign the given days of the week for that routine using a checkbox. If another workout is already using that specific day of thew week, it should not appear as an option.
--AAU, when saving a new routine/workout I want to be able to be redirected to my workouts page with the new routine added. From there I can add exercises to that routine as needed
-'''
 
 
+@login_required
 def home(request):
     return render(request, 'main_app/home.html')
 
@@ -70,3 +61,24 @@ def exercise_search(request):
 
     # If there is no query, just render the search page without results
     return render(request, 'main_app/exercise_search.html')
+
+
+def signup(request):
+    # POST request
+    error_message = ''
+    # user is signing up with a form submission
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('home')
+        else:
+            error_message = 'invalid signup - try again'
+    # GET request
+    form = UserCreationForm()
+    return render(request, 'registration/signup.html', {
+        'form': form,
+        'error': error_message
+    })
+    # user us navigating to signup page to fill out the form
