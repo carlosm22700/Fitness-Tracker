@@ -5,16 +5,16 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
 from .forms import RoutineForm
-from .models import TrainingDay
+from .models import TrainingDay, Routine
 
 # Create your views here.
 
 
 @login_required
 def home(request):
-    days_of_week = ["Monday", "Tuesday", "Wednesday",
-                    "Thursday", "Friday", "Saturday", "Sunday"]
-    return render(request, 'main_app/home.html', {'days_of_week': days_of_week})
+    days_of_week = TrainingDay.objects.all()
+    routines = Routine.objects.filter(user=request.user)
+    return render(request, 'main_app/home.html', {'days_of_week': days_of_week, 'routines': routines})
 
 
 def signup(request):
