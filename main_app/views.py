@@ -39,6 +39,12 @@ def signup(request):
     # user us navigating to signup page to fill out the form
 
 
+@login_required
+def view_routines(request):
+    routines = Routine.objects.filter(user=request.user)
+    return render(request, 'main_app/view_routines.html', {'routines': routines})
+
+
 # def add_routine(request):
 #     if request.method == "POST":
 #         form = RoutineForm(request.POST)

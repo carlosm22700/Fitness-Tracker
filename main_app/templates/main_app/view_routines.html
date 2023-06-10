@@ -1,0 +1,24 @@
+{% extends 'main_app/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <h3 class="center-align">My Routines</h3>
+        {% for routine in routines %}
+        <div class="col s12 m6">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">{{ routine.name }}</span>
+                    <p>Days: {{ routine.days_of_week.all|join:", " }}</p>
+                </div>
+                <div class="card-action">
+                    <a href="#">Add Exercises</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
