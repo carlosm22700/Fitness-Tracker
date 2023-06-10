@@ -24,3 +24,8 @@ footer.page-footer {
   background-color: #333; /* Change the footer background color */
   color: #fff; /* Change the footer text color */
 }
+
+.routine-name {
+    font-size: 1.2em;
+    font-weight: bold;
+}

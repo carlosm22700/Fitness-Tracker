@@ -22,7 +22,7 @@
                                     {% for routine in routines %}
                                         {% for routine_day in routine.days_of_week.all %}
                                             {% if routine_day.day == day.day %}
-                                                {{ routine.name }} <br>
+                                                <span class="routine-name">{{ routine.name }}</span>
                                             {% endif %}
                                         {% endfor %}
                                     {% endfor %}

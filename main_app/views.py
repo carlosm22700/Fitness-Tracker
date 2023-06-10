@@ -1,3 +1,4 @@
+from django.contrib import messages
 import requests
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
@@ -38,14 +39,39 @@ def signup(request):
     # user us navigating to signup page to fill out the form
 
 
+# def add_routine(request):
+#     if request.method == "POST":
+#         form = RoutineForm(request.POST)
+#         if form.is_valid():
+#             routine = form.save(commit=False)
+#             routine.user = request.user
+#             routine.save()
+#             form.save_m2m()
+#             return redirect('home')
+#     else:
+#         form = RoutineForm()
+#     return render(request, 'main_app/add_routine.html', {'form': form})
+
+# This is an example, adapt it according to your view function or class-based view
+
+
 def add_routine(request):
-    if request.method == "POST":
+    if request.method == 'POST':
         form = RoutineForm(request.POST)
         if form.is_valid():
+            selected_days = form.cleaned_data.get('days_of_week')
+            # Check if routine already exists for selected days
+            for day in selected_days:
+                if Routine.objects.filter(user=request.user, days_of_week=day).exists():
+                    messages.error(
+                        request, f'Routine already exists for {day}.')
+                    # or render the form again with an error message
+                    return redirect('add_routine')
+            # Save the routine if no conflicts
             routine = form.save(commit=False)
             routine.user = request.user
             routine.save()
-            form.save_m2m()
+            form.save_m2m()  # save the many-to-many relationship with TrainingDay
             return redirect('home')
     else:
         form = RoutineForm()
