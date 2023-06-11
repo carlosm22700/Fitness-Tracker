@@ -23,6 +23,7 @@
                         <tr>
                             <th>Day of the Week</th>
                             <th>Routine</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,6 +35,18 @@
                                     {% for routine_day in routine.days_of_week.all %}
                                         {% if routine_day.day == day.day %}
                                             <span class="routine-name">{{ routine.name }}</span>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endfor %}
+                            </td>
+                            <td>
+                                {% for routine in routines %}
+                                    {% for routine_day in routine.days_of_week.all %}
+                                        {% if routine_day.day == day.day %}
+                                            <form style="display:inline;" method="post" action="{% url 'delete_routine' routine.id %}">
+                                                {% csrf_token %}
+                                                <button type="submit" class="delete-routine-btn">Delete</button>
+                                            </form>
                                         {% endif %}
                                     {% endfor %}
                                 {% endfor %}

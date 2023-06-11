@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_http_methods
 from django.contrib.auth import login
 from .forms import RoutineForm, PlannedExerciseForm
-from .models import TrainingDay, Routine, Exercise
+from .models import TrainingDay, Routine, Exercise, PlannedExercise
 
 # Create your views here.
 
@@ -103,4 +103,15 @@ def delete_routine(request, routine_id):
         routine.delete()
     except Routine.DoesNotExist:
         pass  # handle the case where the routine does not exist if needed
+    return redirect('view_routines')
+
+
+@require_http_methods(["POST"])
+def delete_exercise(request, routine_id, exercise_id):
+    try:
+        planned_exercise = PlannedExercise.objects.get(
+            pk=exercise_id, routine__id=routine_id)
+        planned_exercise.delete()
+    except PlannedExercise.DoesNotExist:
+        pass
     return redirect('view_routines')
