@@ -4,7 +4,7 @@
 
 <div class="container">
     <h3>Add Exercise to {{ routine.name }}</h3>
-    <form method="post" action="{% url 'add_exercise' routine.id selected_exercise_id %}">
+    <form method="post" action="{% url 'add_exercise' routine.id selected_exercise.id %}">
         {% csrf_token %}
         <p>
             <label for="{{ form.exercise.id_for_label }}">Exercise:</label>
@@ -23,6 +23,7 @@
 </div>
 
 {% endblock %}
+
 
 <!-- TODO:
 Add correct link <form method="post" action="{% url 'add_exercise' routine.id selected_exercise.id %}">

@@ -11,6 +11,15 @@
                 <div class="card-content">
                     <span class="card-title">{{ routine.name }}</span>
                     <p>Days: {{ routine.days_of_week.all|join:", " }}</p>
+                    
+                    <ul>
+                        {% for planned_exercise in routine.plannedexercise_set.all %}
+                        <li>
+                            {{ planned_exercise.exercise.name }}: {{ planned_exercise.sets }} x {{ planned_exercise.reps }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    
                 </div>
                 <div class="card-action">
                     <a href="{% url 'exercise_search' routine.id %}">Add Exercises</a>
