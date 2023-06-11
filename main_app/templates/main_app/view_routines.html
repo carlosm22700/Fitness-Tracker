@@ -10,7 +10,13 @@
             <div class="col s12 m6">
                 <div class="card">
                     <div class="card-content">
-                        <span class="card-title">{{ routine.name }}</span>
+                        <span class="card-title">
+                            {{ routine.name }}
+                            <form style="display:inline;" method="post" action="{% url 'delete_routine' routine.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="delete-routine-btn">-</button>
+                            </form>
+                        </span>
                         <p>Days: {{ routine.days_of_week.all|join:", " }}</p>
                         <ul>
                             {% for planned_exercise in routine.plannedexercise_set.all %}

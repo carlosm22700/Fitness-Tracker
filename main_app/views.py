@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_http_methods
 from django.contrib.auth import login
 from .forms import RoutineForm, PlannedExerciseForm
 from .models import TrainingDay, Routine, Exercise
@@ -93,3 +94,13 @@ def exercise_search(request, routine_id):
     if query:
         exercises = Exercise.objects.filter(name__icontains=query)
     return render(request, 'main_app/exercise_search.html', {'exercises': exercises, 'routine_id': routine_id})
+
+
+@require_http_methods(["POST"])
+def delete_routine(request, routine_id):
+    try:
+        routine = Routine.objects.get(pk=routine_id)
+        routine.delete()
+    except Routine.DoesNotExist:
+        pass  # handle the case where the routine does not exist if needed
+    return redirect('view_routines')
