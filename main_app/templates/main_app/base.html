@@ -1,52 +1,41 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>FitTrax</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'css/style.css' %}"
-    />
-  </head>
-  <body>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+</head>
+<body>
     <header class="navbar-fixed">
-      <nav>
-        <div class="nav-wrapper">
-          <ul>
-            <li>
-              <a href="/" class="left brand-logo">&nbsp;&nbsp;FitTrax</a>
-            </li>
-          </ul>
-          <ul class="right">
-            {% if user.is_authenticated %}
-            <li><a href="{% url 'logout' %}">Logout</a></li>
-            <li><a href="{% url 'view_routines' %}">View Routines</a></li>
-            {% else %}
-            <li><a href="{% url 'login' %}">Login</a></li>
-            <li><a href="{% url 'signup' %}">Signup</a></li>
-            {% endif %}
-          </ul>
-        </div>
-      </nav>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="/" class="left brand-logo" style="padding-left: 20px;">FitTrax</a>
+                <ul class="right" style="padding-right: 20px;">
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                        <li><a href="{% url 'view_routines' %}">View Routines</a></li>
+                    {% else %}
+                        <li><a href="{% url 'login' %}">Login</a></li>
+                        <li><a href="{% url 'signup' %}">Signup</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
     </header>
-    <main class="container">{% block content %} {% endblock %}</main>
+    <main class="container" style="padding-top: 30px;">{% block content %}{% endblock %}</main>
     <footer class="page-footer">
-      <div class="right">
-        All Rights Reserved, &copy; 2023 FitTrax &nbsp;
-      </div>
+        <div class="right">
+            All Rights Reserved, &copy; 2023 FitTrax &nbsp;
+        </div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <!-- Add this just before the closing </body> tag in base.html -->
     {% block script %}{% endblock %}
-  </body>
+</body>
 </html>
