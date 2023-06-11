@@ -1,0 +1,30 @@
+{% extends 'main_app/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h3>Add Exercise to {{ routine.name }}</h3>
+    <form method="post" action="{% url 'add_exercise' routine.id selected_exercise_id %}">
+        {% csrf_token %}
+        <p>
+            <label for="{{ form.exercise.id_for_label }}">Exercise:</label>
+            {{ form.exercise }}
+        </p>
+        <p>
+            <label for="{{ form.sets.id_for_label }}">Sets:</label>
+            {{ form.sets }}
+        </p>
+        <p>
+            <label for="{{ form.reps.id_for_label }}">Reps:</label>
+            {{ form.reps }}
+        </p>
+        <button type="submit" class="btn">Add Exercise</button>
+    </form>
+</div>
+
+{% endblock %}
+
+<!-- TODO:
+Add correct link <form method="post" action="{% url 'add_exercise' routine.id selected_exercise.id %}">
+
+-->

@@ -10,6 +10,12 @@ class RoutineForm(forms.ModelForm):
             'days_of_week': forms.SelectMultiple(attrs={'class': 'browser-default'})
         }
 
+
+class PlannedExerciseForm(forms.ModelForm):
+    class Meta:
+        model = PlannedExercise
+        fields = ['sets', 'reps']
+
 # class PlannedExerciseForm(forms.ModelForm):
 #     class Meta:
 #         model = PlannedExercise

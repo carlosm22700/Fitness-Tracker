@@ -13,7 +13,7 @@
                     <p>Days: {{ routine.days_of_week.all|join:", " }}</p>
                 </div>
                 <div class="card-action">
-                    <a href="#">Add Exercises</a>
+                    <a href="{% url 'exercise_search' routine.id %}">Add Exercises</a>
                 </div>
             </div>
         </div>

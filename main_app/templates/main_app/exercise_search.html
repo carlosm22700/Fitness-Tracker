@@ -1,24 +1,21 @@
+{% extends 'main_app/base.html' %}
 
-{% extends 'main_app/base.html' %} {% block content %}
+{% block content %}
 
-<form method="get" action="{% url 'exercise_search' %}">
-    <input type="text" name="query" placeholder="Search for exercises...">
-    <button type="submit">Search</button>
-</form>
-
-{% if exercises %}
+<div class="container">
+    <h3>Search for Exercises</h3>
+    <form method="get" action="{% url 'exercise_search' routine_id %}">
+        <input type="text" name="query" placeholder="Search...">
+        <button type="submit" class="btn">Search</button>
+    </form>
+    
     <ul>
         {% for exercise in exercises %}
-    <div>
-        <h3>{{ exercise.name }}</h3>
-        <img src="{{ exercise.image }}" alt="{{ exercise.name }}">
-        <p>Category: {{ exercise.category }}</p>
-    </div>
-{% endfor %}
-
+        <li>
+            <a href="{% url 'add_exercise' routine_id exercise.id %}">{{ exercise.name }}</a>
+        </li>
+        {% endfor %}
     </ul>
-{% endif %}
-
+</div>
 
 {% endblock %}
-
