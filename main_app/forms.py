@@ -15,8 +15,3 @@ class PlannedExerciseForm(forms.ModelForm):
     class Meta:
         model = PlannedExercise
         fields = ['sets', 'reps']
-
-# class PlannedExerciseForm(forms.ModelForm):
-#     class Meta:
-#         model = PlannedExercise
-#         fields = ['routine', 'exercises', 'sets', 'reps']

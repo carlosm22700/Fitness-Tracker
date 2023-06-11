@@ -37,7 +37,7 @@ def signup(request):
         'form': form,
         'error': error_message
     })
-    # user us navigating to signup page to fill out the form
+    # user is navigating to signup page to fill out the form
 
 
 @login_required
