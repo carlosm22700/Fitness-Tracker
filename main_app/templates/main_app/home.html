@@ -1,6 +1,12 @@
-{% extends 'main_app/base.html' %} {% block content %}
+{% extends 'main_app/base.html' %} 
+{% block content %}
 
 <div class="container">
+    <div id="quote-section">
+        <h4 class="center-align">Motivational Quote of the Day</h4>
+        <p id="quote-text" class="center-align"></p>
+        <p class="center-align"><strong>- <span id="quote-author"></span></strong></p>
+    </div>
     <div class="row">
         <div class="col s12">
             <h3 class="center-align">Dashboard</h3>
@@ -39,5 +45,28 @@
         </div>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Fetch motivational quote
+        const settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://type.fit/api/quotes",
+            "method": "GET"
+        }
+
+        $.ajax(settings).done(function (response) {
+            const data = JSON.parse(response);
+            // Select a random quote from the array
+            const randomIndex = Math.floor(Math.random() * data.length);
+            const quote = data[randomIndex];
+            // Update the HTML content with the quote
+            $("#quote-text").text(quote.text);
+            $("#quote-author").text(quote.author || 'Unknown');
+        });
+    });
+</script>
 
 {% endblock %}
