@@ -45,7 +45,7 @@
                                         {% if routine_day.day == day.day %}
                                             <form style="display:inline;" method="post" action="{% url 'delete_routine' routine.id %}">
                                                 {% csrf_token %}
-                                                <button type="submit" class="delete-routine-btn">Delete</button>
+                                                <button type="submit" class="btn-flat delete-routine-btn"><i class="material-icons">delete</i></button>
                                             </form>
                                         {% endif %}
                                     {% endfor %}
