@@ -20,8 +20,6 @@ class Command(BaseCommand):
 
                 # Loop through each item in the response
                 for exercise in response_data['results']:
-                    # Here you can add logic to fetch muscle_group information
-                    # For the purpose of this example, I'm leaving it blank.
                     muscle_group = ''
 
                     # Create a new Exercise object and save it to the database
