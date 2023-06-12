@@ -21,7 +21,6 @@ class Command(BaseCommand):
                 # Loop through each item in the response
                 for exercise in response_data['results']:
                     muscle_group = ''
-
                     # Create a new Exercise object and save it to the database
                     Exercise.objects.get_or_create(
                         api_id=exercise['id'],
