@@ -48,9 +48,11 @@ This Fitness Tracker App aims to provide users with a seamless experience for cr
 
 ## ICEBOX FEATURES
 
+- Allow users to Edit and Delete Routines/Exercises
+- Allow users to make logs of their workouts and track user improvement
+- Allow users to see images of their selected workout, as well as necessary equipment and targeted muscles
 - Allow users to share their workout routines with friends.
 - Provide workout recommendations based on user's fitness goals.
-- Integrate with wearable devices to track workout performance.
 
 ## Contribution Guidelines
 
