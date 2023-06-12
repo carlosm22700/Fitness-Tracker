@@ -32,9 +32,9 @@ This Fitness Tracker App aims to provide users with a seamless experience for cr
  
 5. After submitting, you will be redirected back to the dashboard. Click on 'View Routies' to see routines, and associated exercises.
 
-![ExerciseSearch](/screenshots/Exercise-Search.png "ExerciseSearch")
-
 ![ExerciseSearch1](/screenshots/Exercise-search1.png "ExerciseSearch1")
+
+![ExerciseSearch](/screenshots/Exercise-Search.png "ExerciseSearch")
 
 6. Search for the wanted exercise, and click on the name.
 
