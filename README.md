@@ -15,32 +15,34 @@ This Fitness Tracker App aims to provide users with a seamless experience for cr
 ## Getting Started
 
 1. [Click here to access the Fitness Tracker App.](https://fittrax.herokuapp.com/accounts/login/?next=/)
+
+2. https://trello.com/b/UrEJ3fEv/capstone-project
    
 ![Login](/screenshots/Login.png "Login")
 
-2. Log in or sign up to access your personalized workout dashboard.
+3. Log in or sign up to access your personalized workout dashboard.
 
 ![Dashboard](/screenshots/home.png "Dashboard")
 
-3. Once logged in, you will land on a dashboard that displays a weekly schedule with the muscle groups targeted each day.
+4. Once logged in, you will land on a dashboard that displays a weekly schedule with the muscle groups targeted each day.
 
 ![RoutineEditor](/screenshots/AddRoutine.png "RoutineEditor")
 
-4. Click the button to add a new routine. Each routine consists of a name and the day of the week.
+5. Click the button to add a new routine. Each routine consists of a name and the day of the week.
 
 ![Routines](/screenshots/Routines.png "Routines")
  
-5. After submitting, you will be redirected back to the dashboard. Click on 'View Routies' to see routines, and associated exercises.
+6. After submitting, you will be redirected back to the dashboard. Click on 'View Routies' to see routines, and associated exercises.
 
 ![ExerciseSearch1](/screenshots/Exercise-search1.png "ExerciseSearch1")
 
 ![ExerciseSearch](/screenshots/Exercise-Search.png "ExerciseSearch")
 
-6. Search for the wanted exercise, and click on the name.
+7. Search for the wanted exercise, and click on the name.
 
 ![AddExercise](/screenshots/Add-exercise.png "AddExercise")
 
-7. Input necessary set and repetition information. After submitting, you'll be redirected to 'My Routines'.
+8. Input necessary set and repetition information. After submitting, you'll be redirected to 'My Routines'.
 
 ![InspirationalQuote](/screenshots/Quote.png "InspirationalQuote")
 
