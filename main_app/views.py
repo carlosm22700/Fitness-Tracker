@@ -46,6 +46,7 @@ def view_routines(request):
     return render(request, 'main_app/view_routines.html', {'routines': routines})
 
 
+@login_required
 def add_routine(request):
     if request.method == 'POST':
         form = RoutineForm(request.POST)
