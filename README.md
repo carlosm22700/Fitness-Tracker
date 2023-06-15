@@ -56,13 +56,6 @@ This Fitness Tracker App aims to provide users with a seamless experience for cr
 - Allow users to share their workout routines with friends.
 - Provide workout recommendations based on user's fitness goals.
 
-## Contribution Guidelines
-
-Thank you for considering contributing to the Fitness Tracker App! I appreciate any contributions that can improve the project, fix bugs, or add new features. Please follow the guidelines below for a smooth collaboration process.
-
-### Bug Reports and Feature Requests
-
-If you encounter a bug or have a feature request, please open an issue on our GitHub repository. Provide detailed information about the problem or the requested feature, including steps to reproduce the issue if applicable.
 
 ### Pull Requests
 
@@ -76,13 +69,3 @@ I welcome pull requests for bug fixes, improvements, or new features. To contrib
 6. Submit a pull request to the `main` branch.
 
 I will review your pull request promptly.
-
-### Code Style and Conventions
-
-To maintain a consistent codebase, please adhere to the following code style and conventions:
-
-- Follow the styling for the project.
-- Use meaningful and descriptive variable and function names.
-- Write clear and concise comments
-
-I appreciate your contributions in making this project better!
